@@ -1,12 +1,20 @@
-USE sql_store;
+CREATE DATABASE siddhi;
+USE siddhi;
 
--- SELECT first_name,last_name, points, points+10 AS 'discount factor'
--- FROM customers
--- WHERE customer_id = 1;
--- ORDER BY first_name
+CREATE TABLE users(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+gender ENUM('Male', 'Female', 'Other')
+);
 
--- SELECT DISTINCT state FROM customers;
+SELECT * FROM users;
 
--- SELECT name, unit_price, unit_price + 1.1 AS new_price FROM products;
+RENAME TABLE users TO kemcho;
 
-SELECT * FROM Customers WHERE points > 3000
+RENAME TABLE kemcho to users;
+
+ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT TRUE;
+ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT current_timestamp;
+ALTER TABLE users DROP COLUMN is_active;
+ALTER TABLE users MODIFY COLUMN name VARCHAR(150);
+ALTER TABLE users MODIFY COLUMN ID int AFTER name;
