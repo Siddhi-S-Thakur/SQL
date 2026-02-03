@@ -1,6 +1,8 @@
 CREATE DATABASE IF NOT EXISTS startersql;
 USE startersql;
 
+Drop TABLE users;
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -41,3 +43,7 @@ INSERT INTO users (name, email, gender, date_of_birth, salary) VALUES
 SELECT * FROM users;
 SELECT * FROM users WHERE date_of_birth IS NULL;
 SELECT * FROM users WHERE id < 10;
+
+SELECT * FROM users WHERE gender='Male' OR salary>'65000' ORDER BY date_of_birth DESC LIMIT 5;
+
+UPDATE users SET salary = 45000, email = 'aarav@gmail.con' WHERE id = 1;
